@@ -1,0 +1,75 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <h4 class="text-center">Registration Form</h4>
+            <form [formGroup]="myRegForm" (ngSubmit)="onSubmit()" class="card">
+                <div class="form-row" formGroupName="fullName">
+                    <div class="form-group col-md-6">
+                      <label for="fName">First Name</label>
+                      <input type="text" class="form-control" id="fName" formControlName="firstName">
+                      <small class="text-danger"
+                        *ngIf="!myRegForm.get('fullName.firstName').valid && myRegForm.get('fullName.firstName').touched">FirstName is Required</small>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="Lname">Last Name</label>
+                      <input type="text" class="form-control" id="lName" formControlName="lastName">
+                      <small class="text-danger"
+                        *ngIf="!myRegForm.get('fullName.lastName').valid && myRegForm.get('fullName.lastName').touched">LastName is Required</small>
+                    </div>
+                  </div>
+                <div class="form-row" formGroupName="userContEmail">
+                  <div class="form-group col-md-6">
+                    <label for="uEmail">Email</label>
+                    <input type="email" class="form-control" id="uEmail" formControlName="userEmail">
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label for="uContact">Contact</label>
+                    <input type="tel" class="form-control" id="uContact" formControlName="userContact">
+
+                    <small
+                    class="text-danger"
+                    *ngIf="
+                      !userNewContact.valid &&
+                      userNewContact.touched
+                    "
+                  >
+                    <ng-container *ngIf="userNewContact.errors.required"
+                      >contact is required!!
+                    </ng-container>
+                    <ng-container *ngIf="userNewContact.errors.minlength">
+                      contact should be at least 10 char long! you have to put
+                      {{
+                       userNewContact?.errors?.minlength.requiredLength -
+                         userNewContact?.errors?.minlength.actualLength
+                      }}
+                      more charecters!!!!
+                    </ng-container>
+                  </small>
+
+                  </div>
+                </div>
+
+                <div class="form-row" formGroupName="userLogin">
+                    <div class="form-group col-md-6">
+                      <label for="uName">User Name</label>
+                      <input type="text" class="form-control" id="uName" formControlName="userName" >
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="uPassword">Password</label>
+                      <input type="Password" class="form-control" id="uPassword" formControlName="userPassword">
+                    </div>
+                  </div>
+               
+
+                <button type="submit" [disabled]="!myRegForm.valid" class=" btn-block btn-outline-primary">Register</button>
+                <button type="submit" [disabled]="!myRegForm.invalid"  (click)="updateProfile()" class=" btn-block btn-outline-primary">Default value</button>
+              </form>
+
+        </div>
+    </div>
+</div>
+
+
+<hr>
+      <p> {{ myRegForm.value | json }} </p>
+      <p> Form Status: {{ myRegForm.status }} </p>

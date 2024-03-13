@@ -1,0 +1,17 @@
+.card{
+    margin-top: 10px;
+    border: none;
+    padding: 40px;
+    transform: translate((-50%, -50%));
+    background: linear-gradient(180deg, rgb(241, 133, 60)0%,#e5e6e5 50%,rgb(24, 145, 20) 100% );
+}
+label, h3, h5{
+    color: rgb(5, 5, 5);
+    font-size: 20px;
+    font-weight: bold;
+}
+.btn{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
